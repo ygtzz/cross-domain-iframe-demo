@@ -1,0 +1,5 @@
+{
+    "scripts": {
+        "dev": "cd iframe anywhere -p 8000 && cd site1 anywhere -p 8888 && cd site2 anywhere -p 9999"
+    }
+}
