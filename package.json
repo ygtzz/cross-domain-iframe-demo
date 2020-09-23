@@ -1,5 +1,8 @@
 {
     "scripts": {
-        "dev": "cd iframe anywhere -p 8000 && cd site1 anywhere -p 8888 && cd site2 anywhere -p 9999"
+        "iframe": "cd iframe && anywhere -p 8000",
+        "site1": "cd site1 && anywhere -p 8888",
+        "site2": "cd site2 && anywhere -p 9999",
+        "start": "npm run iframe & npm run site1 & npm run site2"
     }
 }

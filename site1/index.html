@@ -7,11 +7,15 @@
 </head>
 <body>
     <h1>site1</h1>
+    <label><span>发送内容: </span><input id="txtSend" value="site1" type="text" /></label>
     <button onclick="send()">发送</button>
-    <iframe id="ifr" src="http://localhost:8000/index.html"></iframe>
+    <iframe id="ifr" src="http://localhost:8000/index.html" style="display:none"></iframe>
     <script>
         window.addEventListener('message',function(e){
-            console.log(e.data);
+            if(e.data && e.data.source == 'gui'){
+                let payload = JSON.parse(e.data.payload);
+                console.log('from site2 payload', payload);
+            }
         })
 
         function send(){
@@ -19,7 +23,7 @@
             ifr.contentWindow.postMessage({
                 source: 'site1',
                 payload: {
-                    name: 'site1'
+                    data: document.getElementById('txtSend').value
                 }
             },"*");
         }
